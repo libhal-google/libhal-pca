@@ -36,24 +36,24 @@ hal::status application(hardware_map& p_map)
   HAL_CHECK(pwm0.frequency(1.0_kHz));
 
   while (true) {
-    for (float duty_cycle = 0.0f; duty_cycle < 1.0f; duty_cycle += 0.05f) {
-      (void)pwm0.duty_cycle(duty_cycle);
-      (void)pwm1.duty_cycle(duty_cycle);
-      (void)pwm2.duty_cycle(duty_cycle);
-      (void)pwm3.duty_cycle(duty_cycle);
-      (void)pwm4.duty_cycle(duty_cycle);
-      (void)pwm5.duty_cycle(duty_cycle);
-      (void)pwm6.duty_cycle(duty_cycle);
-      (void)pwm7.duty_cycle(duty_cycle);
-      (void)pwm8.duty_cycle(duty_cycle);
-      (void)pwm9.duty_cycle(duty_cycle);
-      (void)pwm10.duty_cycle(duty_cycle);
-      (void)pwm11.duty_cycle(duty_cycle);
-      (void)pwm12.duty_cycle(duty_cycle);
-      (void)pwm13.duty_cycle(duty_cycle);
-      (void)pwm14.duty_cycle(duty_cycle);
-      (void)pwm15.duty_cycle(duty_cycle);
-      HAL_CHECK(hal::delay(clock, 500ms));
+    for (float duty_cycle = 0.0f; duty_cycle < 1.05f; duty_cycle += 0.05f) {
+      HAL_CHECK(hal::delay(clock, 50ms));
+      HAL_CHECK(pwm0.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm1.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm2.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm3.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm4.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm5.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm6.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm7.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm8.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm9.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm10.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm11.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm12.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm13.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm14.duty_cycle(duty_cycle));
+      HAL_CHECK(pwm15.duty_cycle(duty_cycle));
     }
   }
 
