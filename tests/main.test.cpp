@@ -1,8 +1,8 @@
-namespace hal::library {
-extern void library_test();
-}  // namespace hal::library
+namespace hal::pca {
+extern void pca9685_test();
+}  // namespace hal::pca
 
 int main()
 {
-  hal::library::library_test();
+  hal::pca::pca9685_test();
 }

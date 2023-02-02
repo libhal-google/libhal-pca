@@ -3,6 +3,7 @@
 #include <libhal-armcortex/system_control.hpp>
 
 #include <libhal-lpc40xx/constants.hpp>
+#include <libhal-lpc40xx/i2c.hpp>
 #include <libhal-lpc40xx/system_controller.hpp>
 #include <libhal-lpc40xx/uart.hpp>
 
@@ -28,9 +29,14 @@ hal::result<hardware_map> initialize_target()
     .baud_rate = 38400,
   })));
 
+  auto& i2c = HAL_CHECK((hal::lpc40xx::i2c::get<2>(hal::i2c::settings{
+    .clock_rate = 100.0_kHz,
+  })));
+
   return hardware_map{
     .console = &uart0,
     .clock = &counter,
+    .i2c = &i2c,
     .reset = []() { hal::cortex_m::system_control::reset(); },
   };
 }

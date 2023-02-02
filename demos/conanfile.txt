@@ -1,6 +1,6 @@
 [requires]
 libhal-lpc40xx/0.3.11
-libhal-library/0.3.0
+libhal-pca/0.3.0
 libhal-util/0.3.7
 
 [tool_requires]

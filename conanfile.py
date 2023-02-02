@@ -9,14 +9,14 @@ import os
 required_conan_version = ">=1.50.0"
 
 
-class LibhalLibraryConan(ConanFile):
-    name = "libhal-library"
+class LibhalPCAConan(ConanFile):
+    name = "libhal-pca"
     version = "0.3.0"
     license = "Apache-2.0"
     url = "https://github.com/conan-io/conan-center-index"
-    homepage = "https://github.com/libhal/libhal-library"
-    description = ("A collection of drivers for the library")
-    topics = ("library", "libhal", "driver")
+    homepage = "https://github.com/libhal/libhal-pca"
+    description = ("A collection of drivers for the pca series of chips")
+    topics = ("libhal", "driver", "i2c", "nxp", "ti")
     settings = "compiler"
     exports_sources = "include/*"
     no_copy_source = True
@@ -74,4 +74,4 @@ class LibhalLibraryConan(ConanFile):
         self.cpp_info.frameworkdirs = []
         self.cpp_info.libdirs = []
         self.cpp_info.resdirs = []
-        self.cpp_info.set_property("cmake_target_name", "libhal::library")
+        self.cpp_info.set_property("cmake_target_name", "libhal::pca")

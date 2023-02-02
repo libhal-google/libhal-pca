@@ -30,7 +30,7 @@ find_package(libhal-mock REQUIRED CONFIG)
 find_package(libhal-util REQUIRED CONFIG)
 
 add_executable(${PROJECT_NAME}
-  library.test.cpp
+  pca9685.test.cpp
   main.test.cpp)
 
 target_include_directories(${PROJECT_NAME} PUBLIC . ../include)

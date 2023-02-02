@@ -9,6 +9,7 @@ struct hardware_map
 {
   hal::serial* console;
   hal::steady_clock* clock;
+  hal::i2c* i2c;
   hal::callback<void()> reset;
 };
 

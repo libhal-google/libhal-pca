@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <exception>
 
-#include <libhal-library/library.hpp>
+#include <libhal-pca/pca9685.hpp>
 
 int main()
 {

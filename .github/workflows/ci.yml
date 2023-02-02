@@ -13,6 +13,6 @@ jobs:
   CI:
     uses: libhal/libhal/.github/workflows/checks.yml@main
     with:
-      library: libhal-library
+      library: libhal-pca
       coverage: true
     secrets: inherit
