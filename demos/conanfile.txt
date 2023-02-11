@@ -1,6 +1,6 @@
 [requires]
 libhal-pca/[^0.3.1]
-libhal-lpc40xx/[^0.3.11]
+libhal-lpc40xx/[^0.3.12]
 
 [tool_requires]
 gnu-arm-embedded-toolchain/11.3.0
