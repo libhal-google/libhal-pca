@@ -71,14 +71,16 @@ public:
     {
     }
 
-    hal::status driver_frequency(hal::hertz p_frequency) override
+    result<frequency_t> driver_frequency(hal::hertz p_frequency) override
     {
-      return m_pca9685->set_channel_frequency(p_frequency);
+      HAL_CHECK(m_pca9685->set_channel_frequency(p_frequency));
+      return frequency_t{};
     }
 
-    hal::status driver_duty_cycle(float p_duty_cycle) override
+    result<duty_cycle_t> driver_duty_cycle(float p_duty_cycle) override
     {
-      return m_pca9685->set_channel_duty_cycle(p_duty_cycle, m_channel);
+      HAL_CHECK(m_pca9685->set_channel_duty_cycle(p_duty_cycle, m_channel));
+      return duty_cycle_t{};
     }
 
     pca9685* m_pca9685;
@@ -291,13 +293,15 @@ inline hal::status pca9685::set_channel_duty_cycle(float p_duty_cycle,
   hal::byte low_point_lsb = low_point & 0xFF;
   hal::byte low_point_msb = low_point >> 8;
 
-  return hal::write(*m_i2c,
-                    m_address,
-                    std::array{ pwm_channel_address(p_channel),
-                                high_point_msb_lsb,
-                                high_point_msb_lsb,
-                                low_point_lsb,
-                                low_point_msb },
-                    hal::never_timeout());
+  HAL_CHECK(hal::write(*m_i2c,
+                       m_address,
+                       std::array{ pwm_channel_address(p_channel),
+                                   high_point_msb_lsb,
+                                   high_point_msb_lsb,
+                                   low_point_lsb,
+                                   low_point_msb },
+                       hal::never_timeout()));
+
+  return hal::success();
 }
 }  // namespace hal::pca

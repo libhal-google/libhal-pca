@@ -11,7 +11,7 @@ required_conan_version = ">=1.50.0"
 
 class LibhalPCAConan(ConanFile):
     name = "libhal-pca"
-    version = "0.3.1"
+    version = "0.4.0"
     license = "Apache-2.0"
     url = "https://github.com/conan-io/conan-center-index"
     homepage = "https://github.com/libhal/libhal-pca"
@@ -37,8 +37,8 @@ class LibhalPCAConan(ConanFile):
         }
 
     def requirements(self):
-        self.requires("libhal/0.3.5")
-        self.requires("libhal-util/[^0.3.8]")
+        self.requires("libhal/[^1.0.0]")
+        self.requires("libhal-util/[^1.0.0]")
 
     def validate(self):
         if self.settings.get_safe("compiler.cppstd"):
