@@ -11,7 +11,7 @@ required_conan_version = ">=1.50.0"
 
 class LibhalPCAConan(ConanFile):
     name = "libhal-pca"
-    version = "0.4.0"
+    version = "1.0.0"
     license = "Apache-2.0"
     url = "https://github.com/conan-io/conan-center-index"
     homepage = "https://github.com/libhal/libhal-pca"

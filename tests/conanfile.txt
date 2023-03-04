@@ -1,7 +1,0 @@
-[requires]
-boost-ext-ut/1.1.9
-libhal-pca/0.4.0
-
-[generators]
-CMakeToolchain
-CMakeDeps
