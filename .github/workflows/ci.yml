@@ -16,17 +16,35 @@ name: ✅ CI
 
 on:
   workflow_dispatch:
+  release:
+    types:
+      - published
+      - deleted
   pull_request:
   push:
     branches:
       - main
   schedule:
-    - cron: '0 12 * * 0'
+    - cron: "0 12 * * 0"
 
 jobs:
   ci:
-    uses: libhal/ci/.github/workflows/library.yml@main
+    uses: libhal/ci/.github/workflows/library.yml@4.x.y
+    secrets: inherit
+  deploy:
+    uses: libhal/ci/.github/workflows/deploy.yml@4.x.y
+    secrets: inherit
+  build_lpc4074:
+    uses: libhal/ci/.github/workflows/demo_builder.yml@4.x.y
     with:
-      library: libhal-pca
-      coverage: true
+      profile: lpc4074
+      processor_profile: https://github.com/libhal/libhal-armcortex.git
+      platform_profile: https://github.com/libhal/libhal-lpc40.git
+    secrets: inherit
+  build_lpc4078:
+    uses: libhal/ci/.github/workflows/demo_builder.yml@4.x.y
+    with:
+      profile: lpc4078
+      processor_profile: https://github.com/libhal/libhal-armcortex.git
+      platform_profile: https://github.com/libhal/libhal-lpc40.git
     secrets: inherit

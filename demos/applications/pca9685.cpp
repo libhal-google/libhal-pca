@@ -51,7 +51,7 @@ hal::status application(hardware_map& p_map)
 
   while (true) {
     for (float duty_cycle = 0.0f; duty_cycle < 1.05f; duty_cycle += 0.05f) {
-      HAL_CHECK(hal::delay(clock, 50ms));
+      hal::delay(clock, 50ms);
       HAL_CHECK(pwm0.duty_cycle(duty_cycle));
       HAL_CHECK(pwm1.duty_cycle(duty_cycle));
       HAL_CHECK(pwm2.duty_cycle(duty_cycle));

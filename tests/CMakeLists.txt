@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,16 +36,15 @@ else()
 endif()
 
 list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})
-set(CMAKE_BUILD_TYPE "Debug")
 
 find_package(ut REQUIRED CONFIG)
-find_package(libhal-pca REQUIRED CONFIG)
+find_package(libhal REQUIRED CONFIG)
 
 add_executable(${PROJECT_NAME}
   pca9685.test.cpp
   main.test.cpp)
 
-target_include_directories(${PROJECT_NAME} PUBLIC . ../include)
+target_include_directories(${PROJECT_NAME} PUBLIC . ../include ../src)
 target_compile_options(${PROJECT_NAME} PRIVATE
   --coverage
   -fprofile-arcs
@@ -67,4 +66,4 @@ target_link_options(${PROJECT_NAME} PRIVATE
   -fsanitize=address)
 target_link_libraries(${PROJECT_NAME} PRIVATE
   Boost::ut
-  libhal::pca)
+  libhal::libhal)

@@ -13,16 +13,24 @@
 # limitations under the License.
 
 cmake_minimum_required(VERSION 3.15)
-project(test_package LANGUAGES CXX)
 
-find_package(libhal-pca REQUIRED CONFIG)
+project(libhal-pca VERSION 0.0.1 LANGUAGES CXX)
 
-add_executable(${PROJECT_NAME} main.cpp)
-target_include_directories(${PROJECT_NAME} PUBLIC .)
-target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
+find_package(libhal REQUIRED CONFIG)
+find_package(libhal-util REQUIRED CONFIG)
 
-if(BAREMETAL)
-  target_link_options(${PROJECT_NAME} PRIVATE --oslib=semihost)
+if(NOT BUILD_TESTING STREQUAL OFF)
+  add_subdirectory(tests)
 endif()
 
-target_link_libraries(${PROJECT_NAME} PRIVATE libhal::pca)
+add_library(libhal-pca
+  src/pca9685.cpp)
+
+target_include_directories(libhal-pca PUBLIC include src/)
+target_compile_features(libhal-pca PRIVATE cxx_std_20)
+target_link_libraries(libhal-pca PRIVATE
+  libhal::libhal
+  libhal::util
+)
+
+install(TARGETS libhal-pca)
