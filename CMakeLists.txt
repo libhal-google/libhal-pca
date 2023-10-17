@@ -14,23 +14,23 @@
 
 cmake_minimum_required(VERSION 3.15)
 
-project(libhal-pca VERSION 0.0.1 LANGUAGES CXX)
+project(libhal-pca LANGUAGES CXX)
 
-find_package(libhal REQUIRED CONFIG)
-find_package(libhal-util REQUIRED CONFIG)
+libhal_test_and_make_library(
+  LIBRARY_NAME libhal-pca
 
-if(NOT BUILD_TESTING STREQUAL OFF)
-  add_subdirectory(tests)
-endif()
+  SOURCES
+  src/pca9685.cpp
 
-add_library(libhal-pca
-  src/pca9685.cpp)
+  TEST_SOURCES
+  tests/pca9685.test.cpp
+  tests/main.test.cpp
 
-target_include_directories(libhal-pca PUBLIC include src/)
-target_compile_features(libhal-pca PRIVATE cxx_std_20)
-target_link_libraries(libhal-pca PRIVATE
+  PACKAGES
+  libhal
+  libhal-util
+
+  LINK_LIBRARIES
   libhal::libhal
   libhal::util
 )
-
-install(TARGETS libhal-pca)

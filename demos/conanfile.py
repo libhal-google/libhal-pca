@@ -24,7 +24,7 @@ class demos(ConanFile):
 
     def build_requirements(self):
         self.tool_requires("cmake/3.27.1")
-        self.tool_requires("libhal-cmake-util/1.0.0")
+        self.tool_requires("libhal-cmake-util/2.2.0")
 
     def requirements(self):
         self.requires("libhal-pca/2.0.0")

@@ -9,7 +9,8 @@
 
 namespace hal::pca {
 namespace {
-static constexpr hal::byte mode1 = 0x00;
+// NOTE: keeping this for future reference
+[[maybe_unused]] static constexpr hal::byte mode1 = 0x00;
 static constexpr hal::byte pwm_channel0_address = 0x06;
 static constexpr hal::byte byte_per_pwm_channel = 4;
 static constexpr hal::byte prescaler_address = 0xFE;
@@ -136,6 +137,7 @@ hal::status pca9685::set_channel_frequency(hal::hertz p_frequency)
   return configure(original_settings);
 }
 
+// NOLINTNEXTLINE
 hal::status pca9685::set_channel_duty_cycle(float p_duty_cycle,
                                             hal::byte p_channel)
 {
