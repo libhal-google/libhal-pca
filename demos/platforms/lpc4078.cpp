@@ -38,16 +38,16 @@ hal::result<hardware_map> initialize_target()
   static std::array<hal::byte, 512> receive_buffer;
 
   // Get and initialize UART0 for UART based logging
-  auto uart0 = HAL_CHECK((hal::lpc40::uart::get(0,
-                                                receive_buffer,
-                                                hal::serial::settings{
-                                                  .baud_rate = 38400,
-                                                })));
+  static auto uart0 = HAL_CHECK((hal::lpc40::uart::get(0,
+                                                       receive_buffer,
+                                                       hal::serial::settings{
+                                                         .baud_rate = 115200,
+                                                       })));
 
-  auto i2c = HAL_CHECK((hal::lpc40::i2c::get(2,
-                                             hal::i2c::settings{
-                                               .clock_rate = 100.0_kHz,
-                                             })));
+  static auto i2c = HAL_CHECK((hal::lpc40::i2c::get(2,
+                                                    hal::i2c::settings{
+                                                      .clock_rate = 100.0_kHz,
+                                                    })));
 
   return hardware_map{
     .console = &uart0,
